@@ -65,7 +65,7 @@ Thanks to open source, there are many useful packages helped us.
 
 Generally, some files or folder in the installed package is useless, and when deploy to production system, reduce the files can make deploy clean.
 
-Of cause, a lot of package had done this by add `.gitattributes` file, But also not all, `fzaninotto/faker` for example.
+Of cause, a lot of package had done this by add `.gitattributes` file, But also not all, [`fzaninotto/faker`](https://github.com/fzaninotto/Faker/pull/1085) for example.
 
 ## LICENSE
 

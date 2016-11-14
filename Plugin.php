@@ -52,7 +52,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
 	public static function getSubscribedEvents()
 	{
 		return [
-			ScriptEvents::POST_AUTOLOAD_DUMP => 'onPostAutoloadDump'
+			ScriptEvents::POST_AUTOLOAD_DUMP => 'onPostAutoloadDump',
 		];
 	}
 	
@@ -63,7 +63,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
 	{
 		/** @var Package $package */
 		$package = $this->composer->getPackage();
-		$extra =  $package->getExtra();
+		$extra = $package->getExtra();
 		
 		$ignoreList = isset($extra['light-ignore-plugin']) ? $extra['light-ignore-plugin'] : null;
 		
@@ -81,7 +81,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
 	
 	/**
 	 * @param string $root
-	 * @param array $files
+	 * @param array  $files
 	 */
 	protected function ignorePath($root, array $files)
 	{
@@ -90,7 +90,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
 			if (is_dir($_file)) {
 				$this->fileSystem->removeDirectory($_file);
 			} else {
-				$finder = Finder::create()->in($root)->name($file)->files();
+				$finder = Finder::create()->in($root)->ignoreVCS(false)->name($file)->files();
 				
 				foreach ($finder as $item) {
 					$this->fileSystem->remove($item->getRealPath());

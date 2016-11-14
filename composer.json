@@ -1,0 +1,38 @@
+{
+  "name": "light/composer-ignore-plugin",
+  "description": "ignore files by yourself",
+  "keywords": [
+	".gitattributes",
+	"ignore",
+	"remove",
+	"delete",
+	"ignore file",
+	"remove file",
+	"delete file",
+	"composer",
+	"plugin"
+  ],
+  "type": "composer-plugin",
+  "require": {
+	"composer-plugin-api": "^1.0",
+    "symfony/finder": "~3.1"
+  },
+  "require-dev": {
+	"composer/composer": "~1.0.0"
+  },
+  "license": "MIT",
+  "authors": [
+	{
+	  "name": "lichunqiang",
+	  "email": "light-li@hotmail.com"
+	}
+  ],
+  "autoload": {
+	"psr-4": {
+	  "Light\\Composer\\": ""
+	}
+  },
+  "extra": {
+	"class": "Light\\Composer\\Plugin"
+  }
+}

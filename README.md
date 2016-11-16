@@ -1,4 +1,4 @@
-Composer Ignore Plugin
+Composer Ignore Plugin [![version](https://img.shields.io/packagist/v/light/composer-ignore-plugin.svg?style=flat-square)](https://packagist.org/packages/light/composer-ignore-plugin) [![Download](https://img.shields.io/packagist/dt/light/composer-ignore-plugin.svg?style=flat-square)](https://packagist.org/packages/light/composer-ignore-plugin)
 ----
 
 This plugin help us to remove the unused file or directories in vendor.

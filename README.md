@@ -16,7 +16,7 @@ $ composer global require "light/composer-ignore-plugin:~1.0"
 2.Install locally
 
 ```
-$ composer require "light/composer-ignore-plugin:~1.0" -dev
+$ composer require "light/composer-ignore-plugin:~1.0" --dev
 ```
 
 ## Usage

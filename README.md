@@ -7,13 +7,13 @@ This plugin help us to remove the unused file or directories in vendor.
 
 Both global or local install can work well.
 
-1. Install globally, so every project can use the plugin.
+1.Install globally, so every project can use the plugin.
 
 ```
 $ composer global require "light/composer-ignore-plugin:~1.0"
 ```
 
-2. Install locally
+2.Install locally
 
 ```
 $ composer require "light/composer-ignore-plugin:~1.0" -dev
@@ -79,6 +79,6 @@ Of cause, a lot of package had done this by add `.gitattributes` file, But also 
 
 ## LICENSE
 
-MIT
+[MIT](LICENSE)
 
 

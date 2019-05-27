@@ -90,7 +90,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
 			if (is_dir($_file)) {
 				$this->fileSystem->removeDirectory($_file);
 			} else {
-				$finder = Finder::create()->in($root)->ignoreVCS(false)->name($file)->files();
+				$finder = Finder::create()->in($root)->ignoreVCS(false)->ignoreDotFiles(false)->name($file)->files();
 				
 				foreach ($finder as $item) {
 					$this->fileSystem->remove($item->getRealPath());

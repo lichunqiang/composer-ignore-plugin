@@ -5,7 +5,6 @@ namespace Light\Composer;
 use Composer\Composer;
 use Composer\Config;
 use Composer\EventDispatcher\EventSubscriberInterface;
-use Composer\Installer\PackageEvent;
 use Composer\IO\IOInterface;
 use Composer\Package\Package;
 use Composer\Plugin\PluginInterface;
@@ -35,7 +34,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
 	 * @var Filesystem
 	 */
 	protected $fileSystem;
-	
+
 	/**
 	 * @inheritdoc
 	 */
@@ -45,7 +44,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
 		$this->config = $composer->getConfig();
 		$this->fileSystem = new Filesystem();
 	}
-	
+
 	/**
 	 * @inheritdoc
 	 */
@@ -55,7 +54,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
 			ScriptEvents::POST_AUTOLOAD_DUMP => 'onPostAutoloadDump',
 		];
 	}
-	
+
 	/**
 	 * @param Event $event
 	 */
@@ -64,24 +63,24 @@ class Plugin implements PluginInterface, EventSubscriberInterface
 		/** @var Package $package */
 		$package = $this->composer->getPackage();
 		$extra = $package->getExtra();
-		
+
 		$ignoreList = isset($extra['light-ignore-plugin']) ? $extra['light-ignore-plugin'] : null;
-		
+
 		if (!$ignoreList) {
 			return;
 		}
-		
+
 		$vendor_dir = $this->config->get('vendor-dir');
-		
+
 		foreach ($ignoreList as $vendor => $files) {
 			$root = $this->fileSystem->normalizePath("{$vendor_dir}/{$vendor}");
 			$this->ignorePath($root, $files);
 		}
 	}
-	
+
 	/**
 	 * @param string $root
-	 * @param array  $files
+	 * @param array $files
 	 */
 	protected function ignorePath($root, array $files)
 	{
@@ -91,11 +90,19 @@ class Plugin implements PluginInterface, EventSubscriberInterface
 				$this->fileSystem->removeDirectory($_file);
 			} else {
 				$finder = Finder::create()->in($root)->ignoreVCS(false)->ignoreDotFiles(false)->name($file)->files();
-				
+
 				foreach ($finder as $item) {
 					$this->fileSystem->remove($item->getRealPath());
 				}
 			}
 		}
+	}
+
+	public function deactivate(Composer $composer, IOInterface $io)
+	{
+	}
+
+	public function uninstall(Composer $composer, IOInterface $io)
+	{
 	}
 }
